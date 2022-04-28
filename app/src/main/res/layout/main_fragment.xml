@@ -38,10 +38,5 @@
             android:gravity="center"
             android:text="Lifespan" />
 
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="match_parent"
-            android:layout_height="176dp"
-            android:text="Back" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

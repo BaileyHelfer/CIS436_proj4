@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,7 +25,7 @@ import com.example.cis436_proj4.databinding.MainFragmentBinding;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainFragment extends DialogFragment {
+public class MainFragment extends Fragment {
     public MainFragmentBinding binding;
     private MainViewModel mViewModel;
     private static final String TAG = "MainFragment";
@@ -40,12 +41,6 @@ public class MainFragment extends DialogFragment {
                              @Nullable Bundle savedInstanceState) {
         binding = MainFragmentBinding.inflate(inflater,container,false);
 
-        binding.btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getDialog().dismiss();
-            }
-        });
         Log.d("++","ONCLICKSET");
         return binding.getRoot();
     }

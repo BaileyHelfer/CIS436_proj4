@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity implements dogImageFragment.
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private VPAdapter vpAdapter;
+    private Fragment dogImageFrag = new dogImageFragment();
+    private Fragment mainFrag = new MainFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +36,18 @@ public class MainActivity extends AppCompatActivity implements dogImageFragment.
 
         tabLayout.setupWithViewPager(viewPager);
 
-        VPAdapter vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        vpAdapter.addFragment(new MainFragment(), "DogInfo");
-        vpAdapter.addFragment(new dogImageFragment(), "Dogs");
+        vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        vpAdapter.addFragment(dogImageFrag, "Dogs");
+        vpAdapter.addFragment(mainFrag, "DogInfo");
         viewPager.setAdapter(vpAdapter);
 
     }
 
     public void onDogSelection(JSONObject data) throws JSONException{
-        //Fragment main = this.getSupportFragmentManager().findFragmentById(R.id.mainFragViewContainer);
-        MainFragment dialog = new MainFragment();
-        //dialog.showDog(data);
-        dialog.show(getSupportFragmentManager(),"MainFragment");
+        MainFragment dialog = (MainFragment)mainFrag;
+        dialog.showDog(data);
+        TabLayout.Tab tab = tabLayout.getTabAt(1);
+        tab.select();
+//        dialog.show(getSupportFragmentManager(),"MainFragment");
     }
 }
