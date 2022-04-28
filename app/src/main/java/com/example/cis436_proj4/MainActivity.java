@@ -31,11 +31,13 @@ public class MainActivity extends AppCompatActivity implements dogImageFragment.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
+        // Set out tab and page view widget
         tabLayout = findViewById(R.id.tabs);
         viewPager = findViewById(R.id.viewPager);
 
         tabLayout.setupWithViewPager(viewPager);
 
+        // Assign our tags with the two fragments we created
         vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         vpAdapter.addFragment(dogImageFrag, "Dogs");
         vpAdapter.addFragment(mainFrag, "DogInfo");
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements dogImageFragment.
 
     }
 
+    //Data between fragments
     public void onDogSelection(JSONObject data) throws JSONException{
         MainFragment dialog = (MainFragment)mainFrag;
         dialog.showDog(data);

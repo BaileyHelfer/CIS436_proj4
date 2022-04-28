@@ -45,7 +45,7 @@ public class MainFragment extends Fragment {
         return binding.getRoot();
     }
 
-
+    // Assign our textviews the data of the image that was clicked on from other fragment
     public void showDog(JSONObject data) throws JSONException {
         String name = data.getString("name").toString();
         String temperament = data.getString("temperament").toString();

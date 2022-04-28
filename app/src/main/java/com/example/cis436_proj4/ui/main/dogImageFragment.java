@@ -77,6 +77,7 @@ public class dogImageFragment extends Fragment {
         binding = DogImageFragmentBinding.inflate(inflater,container,false);
         requestQueue = Volley.newRequestQueue(this.getContext());
         RequestQueue imageRequestQueue = Volley.newRequestQueue(this.getContext());
+        // Initial request containing all the JSON Data of the dogs
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
                 "https://api.thedogapi.com/v1/breeds?api_key=%22+ac3e68d7-3459-4bdc-b3ca-9a49b7720d7b",
                 (JSONArray) null,
@@ -107,7 +108,8 @@ public class dogImageFragment extends Fragment {
                         JSONObject data = content.getJSONObject(x);
                         JSONObject image = data.getJSONObject("image");
                         Log.d("height", String.valueOf(image.getInt("height")));
-                            Log.d("width", String.valueOf(image.getInt("width")));
+                        Log.d("width", String.valueOf(image.getInt("width")));
+                        // In our response we have we will make a new request to get the image of the dog
                         ImageRequest request = new ImageRequest(image.getString("url"),
                                 bitmap ->{
                                     ImageView imageInsert = new ImageView(this.getContext());
@@ -121,6 +123,7 @@ public class dogImageFragment extends Fragment {
                                             }
                                         }
                                     });
+                                    //Assign our imageview in our scroll view the image we recieved from the request
                                     imageInsert.setImageBitmap(bitmap);
                                     binding.linearLayout1.addView(imageInsert);
                                 },
@@ -155,7 +158,7 @@ public class dogImageFragment extends Fragment {
 
         return binding.getRoot();
     }
-
+    // Push data of dog to other fragment
     public void dogSelect(JSONObject data) throws JSONException {
         callback.onDogSelection(data);
     }
