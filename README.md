@@ -12,7 +12,7 @@ Our app has two tabs that are separated into two different fragments:
 
 ## Screenshots
 
-![App Screenshot](readme_imgs/img1.jpg?raw=true) ![App Screenshot](readme_imgs/img2.jpg?raw=true)
+![App Screenshot](readme_imgs/img1.JPG?raw=true) ![App Screenshot](readme_imgs/img2.JPG?raw=true)
 
 ## How to Use
 To use our app, simply download it onto your Android device and open it. From there, you can click on any of the dog images in the DOGS tab to view more information about that breed in the DOGINFO tab.
